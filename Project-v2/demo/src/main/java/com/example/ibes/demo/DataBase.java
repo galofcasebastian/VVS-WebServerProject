@@ -24,6 +24,7 @@ public class DataBase implements CommandLineRunner {
         cars.add(new Car("BMW 530d", 12000, 265, 2011));
         cars.add(new Car("VW Passat", 7000, 140, 2007));
         cars.add(new Car("Mercedes E220", 9000, 180, 2009));
+        cars.add(new Car("Ford Fiesta", 2800, 75, 2007));
         carsRepository.saveAll(cars);
     }
 }

@@ -47,7 +47,7 @@ public class ControllerTest {
     
     @Test
     public void whenGetAllCarsWithEmptyDb_thenReturn200AndCorrectResponse() {
-        ResponseEntity<List<Car>> response = executeCarsRequest("/allCars", HttpMethod.GET);
+        ResponseEntity<List<Car>> response = executeCarsRequest("cars/allCars", HttpMethod.GET);
         assertEquals(HttpStatus.valueOf(200), response.getStatusCode());
         assertEquals(0, response.getBody().size());
     }
@@ -56,7 +56,7 @@ public class ControllerTest {
     public void whenGetAllCarsWithPopulatedDb_thenReturn200AndCorrectResponse() {
         List<Car> cars = Arrays.asList(new Car("BMW 320i", 7500, 175, 2008), new Car("Dacia Logan", 2000, 75, 2011), new Car("VW Passat", 7000, 140, 2007), new Car("Ford Focus", 3200, 100, 2004)); 
         carsRepository.saveAll(cars);
-        ResponseEntity<List<Car>> response = executeCarsRequest("/allCars", HttpMethod.GET);
+        ResponseEntity<List<Car>> response = executeCarsRequest("cars/allCars", HttpMethod.GET);
         assertEquals(HttpStatus.valueOf(200), response.getStatusCode());
         List<Car> responseCarsList = response.getBody();
         assertTrue((responseCarsList.containsAll(cars) && cars.containsAll(responseCarsList)));
